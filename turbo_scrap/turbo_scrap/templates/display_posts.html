@@ -1,0 +1,30 @@
+<form method="post" action="{% url 'export_csv' %}">
+    {% csrf_token %}
+    <table>
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>Post ID</th>
+                <th>Content</th>
+                <th>Likes</th>
+                <th>Shares</th>
+                <th>Comments</th>
+                <th>Post Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+            <tr>
+                <td><input type="checkbox" name="post_ids" value="{{ post.post_id }}"></td>
+                <td>{{ post.post_id }}</td>
+                <td>{{ post.content|truncatewords:10 }}</td>
+                <td>{{ post.likes }}</td>
+                <td>{{ post.shares }}</td>
+                <td>{{ post.comments }}</td>
+                <td>{{ post.post_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button type="submit">Export Selected to CSV</button>
+</form>

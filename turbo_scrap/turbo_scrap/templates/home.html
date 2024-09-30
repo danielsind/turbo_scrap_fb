@@ -1,0 +1,6 @@
+<form method="post">
+    {% csrf_token %}
+    <label for="url">Facebook URL:</label>
+    <input type="text" id="url" name="url" required>
+    <button type="submit">Fetch Posts</button>
+</form>
